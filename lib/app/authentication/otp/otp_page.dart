@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
 class OTPPage extends StatefulWidget {
@@ -10,6 +10,7 @@ class OTPPage extends StatefulWidget {
 }
 
 class _OTPPageState extends State<OTPPage> {
+  verifyOTP() {}
   regenerateOTP() {}
 
   redirectToLoginPage() {}
@@ -33,33 +34,48 @@ class _OTPPageState extends State<OTPPage> {
                     style: TiffinAppTheme.bodySmallTextStyle,
                   ),
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 8, horizontal: 16)),
-                  keyboardType: TextInputType.phone,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                OtpTextField(
+                  autoFocus: true,
+                  numberOfFields: 4,
+                  showFieldAsBox: true,
+                  fieldWidth: 64,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  borderColor: TiffinAppTheme.primaryColor,
+                  focusedBorderColor: TiffinAppTheme.primaryColor,
+                  enabledBorderColor: TiffinAppTheme
+                      .primaryTints[400]!, // ! is a bang; null check at runtime
+                  borderRadius: BorderRadius.circular(8),
+                  showCursor: true,
+                  styles: [
+                    TiffinAppTheme.heading1TextStyle
+                        .copyWith(color: TiffinAppTheme.primaryColor),
+                    TiffinAppTheme.heading1TextStyle
+                        .copyWith(color: TiffinAppTheme.primaryColor),
+                    TiffinAppTheme.heading1TextStyle
+                        .copyWith(color: TiffinAppTheme.primaryColor),
+                    TiffinAppTheme.heading1TextStyle
+                        .copyWith(color: TiffinAppTheme.primaryColor)
+                  ],
                 ),
                 SizedBox(
                   width: double.infinity,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: ElevatedButton(
-                        onPressed: regenerateOTP,
-                        child: const Text("Generate OTP")),
+                        onPressed: verifyOTP, child: const Text("Verify")),
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account? ",
+                      "Didn't receive code? ",
                       style: TiffinAppTheme.bodySmallTextStyle,
                     ),
                     GestureDetector(
-                      onTap: redirectToLoginPage,
+                      onTap: regenerateOTP,
                       child: Text(
-                        "Register Now",
+                        "Resend",
                         style: TiffinAppTheme.bodySmallTextStyle.copyWith(
                             color: TiffinAppTheme.primaryColor,
                             decoration: TextDecoration.underline,

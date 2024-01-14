@@ -28,12 +28,12 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Enter \nyour Phone Number",
+                Text("Login with \nyour Phone Number",
                     style: TiffinAppTheme.heading1TextStyle),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    "We will send you the 4 digit verification code",
+                    "We'll send you the 4 digit verification code",
                     style: TiffinAppTheme.bodySmallTextStyle,
                   ),
                 ),

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: TiffinAppTheme.lightTheme,
-      home: const OTPPage(),
+      home: OTPPage(),
     );
   }
 }
