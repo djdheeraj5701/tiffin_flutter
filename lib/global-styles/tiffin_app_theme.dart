@@ -94,6 +94,8 @@ class TiffinAppTheme {
       foregroundColor: const MaterialStatePropertyAll(Colors.white),
       backgroundColor: const MaterialStatePropertyAll(primaryColor),
     )),
+    navigationBarTheme: const NavigationBarThemeData(
+        backgroundColor: primaryColor, height: 48, elevation: 8),
     colorScheme: const ColorScheme.light().copyWith(
         primary: primaryColor,
         onPrimary: Colors.black,
