@@ -10,13 +10,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  generateOTP() {
-    print("generateOtp");
-  }
+  generateOTP() {}
 
-  redirectToSignUpPage() {
-    print("redirect to sign up page");
-  }
+  redirectToSignUpPage() {}
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +34,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    hintText: "Phone Number",
+                      hintStyle: TiffinAppTheme.bodyRegularTextStyle,
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 8, horizontal: 16)),
+                          const EdgeInsets.symmetric(vertical: 8, horizontal: 16)),
                   keyboardType: TextInputType.phone,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),

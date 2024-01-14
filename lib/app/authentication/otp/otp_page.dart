@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
 class OTPPage extends StatefulWidget {
@@ -21,12 +23,27 @@ class _OTPPageState extends State<OTPPage> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 96, horizontal: 24),
+            padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("OTP\nVerification",
-                    style: TiffinAppTheme.heading1TextStyle),
+                GestureDetector(
+                  onTap: redirectToLoginPage,
+                  child: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: TiffinAppTheme.primaryTints[100]),
+                      padding: const EdgeInsets.all(12),
+                      child: const Icon(
+                        MaterialSymbols.arrow_back,
+                        size: 24,
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text("OTP\nVerification",
+                      style: TiffinAppTheme.heading1TextStyle),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(

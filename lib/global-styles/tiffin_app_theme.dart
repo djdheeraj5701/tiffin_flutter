@@ -86,6 +86,8 @@ class TiffinAppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
+      padding:
+          const MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 12)),
       textStyle: MaterialStatePropertyAll(buttonTextStyle),
       shape: MaterialStateProperty.resolveWith((_) =>
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
