@@ -50,7 +50,6 @@ class AppTheme {
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    primarySwatch: MaterialColor(4294865741, primaryTints),
     colorScheme: const ColorScheme.light().copyWith(
         primary: primaryColor,
         onPrimary: Colors.black,
