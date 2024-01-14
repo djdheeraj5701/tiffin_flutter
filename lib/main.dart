@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiffin_flutter/app/authentication/login/login_page.dart';
+import 'package:tiffin_flutter/app/authentication/otp/otp_page.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: TiffinAppTheme.lightTheme,
-      home: const LoginPage(),
+      home: const OTPPage(),
     );
   }
 }

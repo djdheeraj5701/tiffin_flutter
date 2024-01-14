@@ -53,19 +53,19 @@ class TiffinAppTheme {
   static TextStyle secondaryFontStyle = GoogleFonts.workSans();
 
   static TextStyle heading1TextStyle =
-      primaryFontStyle.copyWith(fontSize: 24, fontWeight: FontWeight.bold);
+      primaryFontStyle.copyWith(fontSize: 24, fontWeight: FontWeight.w900);
 
   static TextStyle heading2TextStyle =
-      primaryFontStyle.copyWith(fontSize: 20, fontWeight: FontWeight.bold);
+      primaryFontStyle.copyWith(fontSize: 20, fontWeight: FontWeight.w900);
 
   static TextStyle bodyLargeTextStyle =
-      secondaryFontStyle.copyWith(fontSize: 18, fontWeight: FontWeight.w300);
+      secondaryFontStyle.copyWith(fontSize: 18, fontWeight: FontWeight.w400);
 
   static TextStyle bodyRegularTextStyle =
-      secondaryFontStyle.copyWith(fontSize: 16, fontWeight: FontWeight.w300);
+      secondaryFontStyle.copyWith(fontSize: 16, fontWeight: FontWeight.w400);
 
   static TextStyle bodySmallTextStyle =
-      secondaryFontStyle.copyWith(fontSize: 14, fontWeight: FontWeight.w300);
+      secondaryFontStyle.copyWith(fontSize: 14, fontWeight: FontWeight.w400);
 
   static TextStyle captionTextStyle =
       secondaryFontStyle.copyWith(fontSize: 12, fontWeight: FontWeight.w300);

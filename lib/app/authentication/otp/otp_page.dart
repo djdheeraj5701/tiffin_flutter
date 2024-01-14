@@ -2,21 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class OTPPage extends StatefulWidget {
+  const OTPPage({super.key});
 
   @override
-  createState() => _LoginPageState();
+  createState() => _OTPPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  generateOTP() {
-    print("generateOtp");
-  }
+class _OTPPageState extends State<OTPPage> {
+  regenerateOTP() {}
 
-  redirectToSignUpPage() {
-    print("redirect to sign up page");
-  }
+  redirectToLoginPage() {}
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +24,12 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Enter \nyour Phone Number",
+                Text("OTP\nVerification",
                     style: TiffinAppTheme.heading1TextStyle),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    "We will send you the 4 digit verification code",
+                    "Enter the verification code sent on your phone number",
                     style: TiffinAppTheme.bodySmallTextStyle,
                   ),
                 ),
@@ -49,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: ElevatedButton(
-                        onPressed: generateOTP,
+                        onPressed: regenerateOTP,
                         child: const Text("Generate OTP")),
                   ),
                 ),
@@ -61,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: TiffinAppTheme.bodySmallTextStyle,
                     ),
                     GestureDetector(
-                      onTap: redirectToSignUpPage,
+                      onTap: redirectToLoginPage,
                       child: Text(
                         "Register Now",
                         style: TiffinAppTheme.bodySmallTextStyle.copyWith(
