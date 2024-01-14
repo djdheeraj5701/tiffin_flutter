@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tiffin_flutter/app/authentication/login/loginPage.dart';
-import 'package:tiffin_flutter/global-styles/appTheme.dart';
+import 'package:tiffin_flutter/app/authentication/login/login_page.dart';
+import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: AppTheme.lightTheme,
-      home: LoginPage(),
+      theme: TiffinAppTheme.lightTheme,
+      home: const LoginPage(),
     );
   }
 }

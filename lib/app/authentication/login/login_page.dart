@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -15,8 +19,16 @@ class _LoginPageState extends State<LoginPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const Text("Enter your Phone Number"),
-              const Text("We will send you the 4 digit verification code"),
+              Text("Enter your Phone Number",
+                  style: TiffinAppTheme.heading2TextStyle),
+              Text(
+                "We will send you the 4 digit verification code",
+                style: TiffinAppTheme.bodyRegularTextStyle,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.phone,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              ),
               ElevatedButton(
                   onPressed: generateOTP, child: const Text("Generate OTP")),
               const Row(
