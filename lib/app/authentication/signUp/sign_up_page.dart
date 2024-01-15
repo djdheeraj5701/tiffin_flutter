@@ -18,7 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
       _termsCheck = !_termsCheck;
     });
   }
-
+  redirectToTermsPage() {}
   redirectToLoginPage() {}
 
   @override
@@ -87,13 +87,24 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     Flexible(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        padding: const EdgeInsets.only(left: 4),
                         child: Text(
-                          "I agree to the Terms and Conditions of use",
+                          "I agree to the ",
                           style: TiffinAppTheme.captionTextStyle,
                         ),
                       ),
-                    )
+                    ),
+                    GestureDetector(
+                      onTap: redirectToTermsPage,
+                      child: Text("Terms and Conditions",
+                        style: TiffinAppTheme.captionTextStyle.copyWith(
+                          decoration: TextDecoration.underline
+                        ),
+                      ),
+                    ),
+                    Text(" of use",
+                      style: TiffinAppTheme.captionTextStyle,
+                    ),
                   ],
                 ),
                 SizedBox(
