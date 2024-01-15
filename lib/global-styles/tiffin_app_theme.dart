@@ -97,10 +97,10 @@ class TiffinAppTheme {
     checkboxTheme: CheckboxThemeData(
         checkColor: const MaterialStatePropertyAll(Colors.white),
         side: BorderSide(color: Colors.grey.shade400),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4))
-        ),
-    navigationBarTheme: const NavigationBarThemeData(
-        backgroundColor: primaryColor, height: 48, elevation: 8),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4))),
+    iconTheme: const IconThemeData(
+      size: 24,
+    ),
     colorScheme: const ColorScheme.light().copyWith(
         primary: primaryColor,
         onPrimary: Colors.black,
