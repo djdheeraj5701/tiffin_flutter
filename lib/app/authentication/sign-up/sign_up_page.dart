@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tiffin_flutter/app_routes.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -10,16 +11,20 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _termsCheck = false;
+  bool _termsCheck = true;
 
-  registerUser() {}
+  registerUser() async {
+    Navigator.of(context).pushNamed(RouteNames.otp.name);
+  }
   toggleTermsCheck() {
     setState(() {
       _termsCheck = !_termsCheck;
     });
   }
   redirectToTermsPage() {}
-  redirectToLoginPage() {}
+  redirectToLoginPage() async {
+    Navigator.of(context).pushReplacementNamed(RouteNames.login.name);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +46,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 TextFormField(
+                  autofocus: true,
+                  textCapitalization: TextCapitalization.words,
+                  textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
                       hintText: "First Name",
                       hintStyle: TiffinAppTheme.bodyRegularTextStyle,
@@ -54,6 +62,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: TextFormField(
+                    textCapitalization: TextCapitalization.words,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                         hintText: "Last Name",
                         hintStyle: TiffinAppTheme.bodyRegularTextStyle,
@@ -66,6 +76,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 TextFormField(
+                  textInputAction: TextInputAction.done,
                   decoration: InputDecoration(
                       hintText: "Phone Number",
                       hintStyle: TiffinAppTheme.bodyRegularTextStyle,

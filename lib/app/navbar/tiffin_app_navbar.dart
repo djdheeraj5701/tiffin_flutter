@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
-import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
 class TiffinAppNavbar extends StatefulWidget {
   const TiffinAppNavbar({super.key});

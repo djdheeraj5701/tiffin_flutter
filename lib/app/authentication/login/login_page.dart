@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tiffin_flutter/app_routes.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
 class LoginPage extends StatefulWidget {
@@ -10,9 +11,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  generateOTP() {}
+  generateOTP() async {
+    Navigator.of(context).pushNamed(RouteNames.otp.name);
+  }
 
-  redirectToSignUpPage() {}
+  redirectToSignUpPage() async {
+    Navigator.of(context).pushReplacementNamed(RouteNames.signUp.name);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +40,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Phone Number",
+                      hintText: "Phone Number",
                       hintStyle: TiffinAppTheme.bodyRegularTextStyle,
-                      contentPadding:
-                          const EdgeInsets.symmetric(vertical: 8, horizontal: 16)),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16)),
                   keyboardType: TextInputType.phone,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
