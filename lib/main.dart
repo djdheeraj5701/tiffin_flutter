@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: TiffinAppTheme.lightTheme,
-      home: const HomePage(),
+      home: const SignUpPage(),
     );
   }
 }

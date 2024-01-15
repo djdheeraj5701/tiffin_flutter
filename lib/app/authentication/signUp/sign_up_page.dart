@@ -10,7 +10,14 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  generateOTP() {}
+  bool _termsCheck = false;
+
+  registerUser() {}
+  toggleTermsCheck() {
+    setState(() {
+      _termsCheck = !_termsCheck;
+    });
+  }
 
   redirectToLoginPage() {}
 
@@ -33,65 +40,68 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: TiffinAppTheme.bodySmallTextStyle,
                   ),
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 4, bottom: 4),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                hintText: "First Name",
-                                hintStyle: TiffinAppTheme.bodyRegularTextStyle,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 16)),
-                            keyboardType: TextInputType.name,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[a-zA-Z]'))
-                            ],
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 4, bottom: 4),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                hintText: "Last Name",
-                                hintStyle: TiffinAppTheme.bodyRegularTextStyle,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 16)),
-                            keyboardType: TextInputType.name,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[a-zA-Z]'))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                TextFormField(
+                  decoration: InputDecoration(
+                      hintText: "First Name",
+                      hintStyle: TiffinAppTheme.bodyRegularTextStyle,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16)),
+                  keyboardType: TextInputType.name,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]'))
+                  ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 4),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   child: TextFormField(
                     decoration: InputDecoration(
-                        hintText: "Phone Number",
+                        hintText: "Last Name",
                         hintStyle: TiffinAppTheme.bodyRegularTextStyle,
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 8, horizontal: 16)),
-                    keyboardType: TextInputType.phone,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    keyboardType: TextInputType.name,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]'))
+                    ],
                   ),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                      hintText: "Phone Number",
+                      hintStyle: TiffinAppTheme.bodyRegularTextStyle,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16)),
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                      child: Checkbox(
+                          value: _termsCheck,
+                          onChanged: (value) {
+                            toggleTermsCheck();
+                          }),
+                    ),
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Text(
+                          "I agree to the Terms and Conditions of use",
+                          style: TiffinAppTheme.captionTextStyle,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 SizedBox(
                   width: double.infinity,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: ElevatedButton(
-                        onPressed: generateOTP, child: const Text("Register")),
+                        onPressed: registerUser, child: const Text("Register")),
                   ),
                 ),
                 Row(
