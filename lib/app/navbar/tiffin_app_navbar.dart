@@ -17,7 +17,7 @@ class _TiffinAppNavbarState extends State<TiffinAppNavbar> {
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
       height: 64,
-      backgroundColor: Colors.white,
+      backgroundColor: TiffinAppTheme.primaryTints[100]!,
       buttonBackgroundColor: TiffinAppTheme.primaryColor,
       color: TiffinAppTheme.primaryColor,
       index: _selectedTab,

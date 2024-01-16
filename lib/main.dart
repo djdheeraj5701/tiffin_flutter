@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: true,
       theme: TiffinAppTheme.lightTheme,
       initialRoute: RouteNames.home.name,
       routes: tiffinAppRoutes,
