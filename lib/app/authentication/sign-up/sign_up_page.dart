@@ -16,11 +16,13 @@ class _SignUpPageState extends State<SignUpPage> {
   registerUser() async {
     Navigator.of(context).pushNamed(RouteNames.otp.name);
   }
+
   toggleTermsCheck() {
     setState(() {
       _termsCheck = !_termsCheck;
     });
   }
+
   redirectToTermsPage() {}
   redirectToLoginPage() async {
     Navigator.of(context).pushReplacementNamed(RouteNames.login.name);
@@ -37,7 +39,7 @@ class _SignUpPageState extends State<SignUpPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Create\nyour Account",
-                    style: TiffinAppTheme.heading1TextStyle),
+                    style: TiffinAppTheme.headingRegularTextStyle),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(
@@ -107,13 +109,14 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     GestureDetector(
                       onTap: redirectToTermsPage,
-                      child: Text("Terms and Conditions",
-                        style: TiffinAppTheme.captionTextStyle.copyWith(
-                          decoration: TextDecoration.underline
-                        ),
+                      child: Text(
+                        "Terms and Conditions",
+                        style: TiffinAppTheme.captionTextStyle
+                            .copyWith(decoration: TextDecoration.underline),
                       ),
                     ),
-                    Text(" of use",
+                    Text(
+                      " of use",
                       style: TiffinAppTheme.captionTextStyle,
                     ),
                   ],

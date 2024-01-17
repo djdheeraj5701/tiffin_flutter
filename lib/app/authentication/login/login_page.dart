@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Login with \nyour Phone Number",
-                    style: TiffinAppTheme.heading1TextStyle),
+                    style: TiffinAppTheme.headingRegularTextStyle),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(

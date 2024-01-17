@@ -15,7 +15,7 @@ class TiffinCard extends StatelessWidget {
       elevation: 2,
       surfaceTintColor: Colors.white,
       shadowColor: Colors.grey.shade100,
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: SizedBox(
           height: 230,
           width: double.infinity,
@@ -38,7 +38,7 @@ class TiffinCard extends StatelessWidget {
                   ),
                   Text(
                     tiffin.title,
-                    style: TiffinAppTheme.heading2TextStyle,
+                    style: TiffinAppTheme.headingSmallTextStyle,
                   ),
                   Text(
                     tiffin.description,
@@ -56,13 +56,12 @@ class TiffinCard extends StatelessWidget {
                           ],
                         ),
                         labelPadding: EdgeInsets.symmetric(horizontal: 2),
-                        labelStyle: TiffinAppTheme.captionTextStyle,
                         backgroundColor: TiffinAppTheme.primaryTints[200],
                         side: BorderSide.none,
                       ),
                       Text(
                         "₹ ${tiffin.price}/-",
-                        style: TiffinAppTheme.heading2TextStyle,
+                        style: TiffinAppTheme.headingSmallTextStyle,
                       )
                     ],
                   ),

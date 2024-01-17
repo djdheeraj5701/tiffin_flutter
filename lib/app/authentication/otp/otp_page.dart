@@ -54,7 +54,7 @@ class _OTPPageState extends State<OTPPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 16),
                     child: Text("OTP\nVerification",
-                        style: TiffinAppTheme.heading1TextStyle),
+                        style: TiffinAppTheme.headingRegularTextStyle),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -76,13 +76,13 @@ class _OTPPageState extends State<OTPPage> {
                     borderRadius: BorderRadius.circular(8),
                     showCursor: true,
                     styles: [
-                      TiffinAppTheme.heading1TextStyle
+                      TiffinAppTheme.headingRegularTextStyle
                           .copyWith(color: TiffinAppTheme.primaryColor),
-                      TiffinAppTheme.heading1TextStyle
+                      TiffinAppTheme.headingRegularTextStyle
                           .copyWith(color: TiffinAppTheme.primaryColor),
-                      TiffinAppTheme.heading1TextStyle
+                      TiffinAppTheme.headingRegularTextStyle
                           .copyWith(color: TiffinAppTheme.primaryColor),
-                      TiffinAppTheme.heading1TextStyle
+                      TiffinAppTheme.headingRegularTextStyle
                           .copyWith(color: TiffinAppTheme.primaryColor)
                     ],
                   ),

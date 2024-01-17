@@ -52,10 +52,13 @@ class TiffinAppTheme {
   static TextStyle primaryFontStyle = GoogleFonts.poppins();
   static TextStyle secondaryFontStyle = GoogleFonts.workSans();
 
-  static TextStyle heading1TextStyle =
+  static TextStyle headingLargeTextStyle =
+      primaryFontStyle.copyWith(fontSize: 28, fontWeight: FontWeight.w900);
+
+  static TextStyle headingRegularTextStyle =
       primaryFontStyle.copyWith(fontSize: 24, fontWeight: FontWeight.w900);
 
-  static TextStyle heading2TextStyle =
+  static TextStyle headingSmallTextStyle =
       primaryFontStyle.copyWith(fontSize: 20, fontWeight: FontWeight.w900);
 
   static TextStyle bodyLargeTextStyle =
@@ -73,6 +76,15 @@ class TiffinAppTheme {
   static TextStyle buttonTextStyle =
       primaryFontStyle.copyWith(fontSize: 16, fontWeight: FontWeight.w300);
 
+  static ButtonStyle elevatedButtonStyle = ButtonStyle(
+    padding: const MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 12)),
+    textStyle: MaterialStatePropertyAll(buttonTextStyle),
+    shape: MaterialStateProperty.resolveWith(
+        (_) => RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+    foregroundColor: const MaterialStatePropertyAll(Colors.white),
+    backgroundColor: const MaterialStatePropertyAll(primaryColor),
+  );
+
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     inputDecorationTheme: InputDecorationTheme(
@@ -84,18 +96,14 @@ class TiffinAppTheme {
         borderRadius: BorderRadius.circular(8),
       ),
     ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
-      padding:
-          const MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 12)),
-      textStyle: MaterialStatePropertyAll(buttonTextStyle),
-      shape: MaterialStateProperty.resolveWith((_) =>
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
-      foregroundColor: const MaterialStatePropertyAll(Colors.white),
-      backgroundColor: const MaterialStatePropertyAll(primaryColor),
-    )),
+    chipTheme: ChipThemeData(
+      selectedColor: primaryTints[200],
+      labelStyle: captionTextStyle.copyWith(color: Colors.black)
+      ),
+    elevatedButtonTheme: ElevatedButtonThemeData(style: elevatedButtonStyle),
     checkboxTheme: CheckboxThemeData(
         checkColor: const MaterialStatePropertyAll(Colors.white),
+        fillColor: const MaterialStatePropertyAll(primaryColor),
         side: BorderSide(color: Colors.grey.shade400),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4))),
     iconTheme: const IconThemeData(
@@ -108,6 +116,7 @@ class TiffinAppTheme {
         secondary: secondaryColor,
         onSecondary: const Color(0xff412020),
         // refer: https://coolors.co/contrast-checker/412020-ffd166
+        // refer: https://m3.material.io/styles/color/system/overview
         background: Colors.white,
         onBackground: Colors.black),
   );
