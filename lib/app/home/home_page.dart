@@ -27,6 +27,10 @@ class _HomePageState extends State<HomePage> {
 
   redirectToNotificationsPage() {}
 
+  redirectToTiffinOrderPage(TiffinDTO tiffinDTO) {
+    Navigator.of(context).pushNamed("/tiffin-order", arguments: tiffinDTO);
+  }
+
   searchTiffins(String searchValue) {
     print(searchValue);
   }
@@ -228,7 +232,12 @@ class _HomePageState extends State<HomePage> {
                     shrinkWrap: true,
                     itemCount: tiffins.length,
                     itemBuilder: (context, index) {
-                      return TiffinCard(tiffin: tiffins[index]);
+                      return GestureDetector(
+                        onTap: () {
+                          redirectToTiffinOrderPage(tiffins[index]);
+                        },
+                        child: TiffinCard(tiffin: tiffins[index]),
+                      );
                     }),
               ],
             ),

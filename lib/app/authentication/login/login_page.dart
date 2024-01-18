@@ -12,11 +12,11 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   generateOTP() async {
-    Navigator.of(context).pushNamed(RouteNames.otp.name);
+    Navigator.of(context).pushNamed(RouteNames.otp.Name);
   }
 
   redirectToSignUpPage() async {
-    Navigator.of(context).pushReplacementNamed(RouteNames.signUp.name);
+    Navigator.of(context).pushReplacementNamed(RouteNames.signUp.Name);
   }
 
   @override

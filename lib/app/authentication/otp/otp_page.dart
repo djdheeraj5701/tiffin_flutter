@@ -14,7 +14,7 @@ class OTPPage extends StatefulWidget {
 class _OTPPageState extends State<OTPPage> {
   verifyOTP() async {
     Navigator.of(context)
-        .pushNamedAndRemoveUntil(RouteNames.home.name, (route) => false);
+        .pushNamedAndRemoveUntil(RouteNames.home.Name, (route) => false);
   }
 
   regenerateOTP() {}
