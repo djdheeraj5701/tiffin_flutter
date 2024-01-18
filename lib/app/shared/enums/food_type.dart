@@ -1,10 +1,12 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 
 enum FoodType { veg, nonVeg, egg }
 
 extension FoodTypeExtension on FoodType {
-  String get name {
+  String get Name {
     if (this == FoodType.veg) return "Veg";
     if (this == FoodType.nonVeg) return "Non-Veg";
     if (this == FoodType.egg) return "Egg";
@@ -13,9 +15,9 @@ extension FoodTypeExtension on FoodType {
 }
 
 FoodType getFoodTypeOf(foodType) {
-  if (foodType == FoodType.veg.name) return FoodType.veg;
-  if (foodType == FoodType.nonVeg.name) return FoodType.nonVeg;
-  if (foodType == FoodType.egg.name) return FoodType.egg;
+  if (foodType == FoodType.veg.Name) return FoodType.veg;
+  if (foodType == FoodType.nonVeg.Name) return FoodType.nonVeg;
+  if (foodType == FoodType.egg.Name) return FoodType.egg;
   throw Exception("Food Type not found");
 }
 

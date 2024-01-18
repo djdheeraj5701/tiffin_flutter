@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:tiffin_flutter/app/shared/enums/food_type.dart';
 import 'package:tiffin_flutter/app/shared/models/tiffin_dto.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
@@ -36,9 +37,35 @@ class TiffinCard extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Text(
-                    tiffin.title,
-                    style: TiffinAppTheme.headingSmallTextStyle,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        tiffin.title,
+                        style: TiffinAppTheme.headingSmallTextStyle,
+                      ),
+                      Container(
+                        width: 44,
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                            color: Color(0xffffd065),
+                            borderRadius: BorderRadius.circular(4)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(
+                              MaterialSymbols.star_filled,
+                              size: 14,
+                            ),
+                            Text(
+                              "${tiffin.rating}",
+                              style: TiffinAppTheme.captionTextStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   Text(
                     tiffin.description,

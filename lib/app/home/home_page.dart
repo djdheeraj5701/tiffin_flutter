@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
-import 'package:tiffin_flutter/app/shared/dialogs/home_tiffin_filter.dart';
 import 'package:tiffin_flutter/app/shared/enums/food_type.dart';
 import 'package:tiffin_flutter/app/shared/models/tiffin_dto.dart';
 import 'package:tiffin_flutter/app/shared/widgets/tiffin_card.dart';
@@ -18,6 +17,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Map<FoodType, bool> categories = {
+    FoodType.veg: true,
+    FoodType.nonVeg: true,
+    FoodType.egg: true,
+  };
+  String sortOption = "Price";
+  bool isAscSort = true;
+
   redirectToNotificationsPage() {}
 
   searchTiffins(String searchValue) {
@@ -26,9 +33,112 @@ class _HomePageState extends State<HomePage> {
 
   openFilterDialog() {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
-        return HomeTiffinFilterDialog();
+        return StatefulBuilder(builder: (stfContext, stfSetState) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            surfaceTintColor: Colors.white,
+            content: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Categories",
+                    style: TiffinAppTheme.headingSmallTextStyle,
+                  ),
+                  Wrap(
+                      spacing: 5.0,
+                      children: FoodType.values
+                          .map((foodType) => ChoiceChip(
+                                label: Text(
+                                  foodType.Name,
+                                ),
+                                selected: categories[foodType]!,
+                                onSelected: (isSelected) {
+                                  stfSetState(() {
+                                    categories.update(
+                                        foodType, (value) => isSelected);
+                                  });
+                                },
+                              ))
+                          .toList()),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Sort By",
+                        style: TiffinAppTheme.headingSmallTextStyle,
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          stfSetState(() {
+                            isAscSort = !isAscSort;
+                          });
+                        },
+                        child: Icon(isAscSort
+                            ? MaterialSymbols.arrow_upward
+                            : MaterialSymbols.arrow_downward),
+                      )
+                    ],
+                  ),
+                  Wrap(
+                      spacing: 5.0,
+                      children: ["Price", "Rating"]
+                          .map((option) => ChoiceChip(
+                                label: Text(
+                                  option,
+                                ),
+                                selected: sortOption == option,
+                                onSelected: (isSelected) {
+                                  stfSetState(() {
+                                    sortOption = option;
+                                  });
+                                },
+                              ))
+                          .toList()),
+                ],
+              ),
+            ),
+            actions: [
+              ElevatedButton(
+                  style: TiffinAppTheme.elevatedButtonStyle.copyWith(
+                      textStyle: MaterialStatePropertyAll(
+                          TiffinAppTheme.bodySmallTextStyle),
+                      foregroundColor:
+                          const MaterialStatePropertyAll(Colors.black),
+                      backgroundColor:
+                          const MaterialStatePropertyAll(Colors.white),
+                      side:
+                          const MaterialStatePropertyAll(BorderSide(width: 1))),
+                  onPressed: () {
+                    stfSetState(() {
+                      categories = {
+                        FoodType.veg: true,
+                        FoodType.nonVeg: true,
+                        FoodType.egg: true,
+                      };
+                      sortOption = "Price";
+                      isAscSort = true;
+                    });
+                  },
+                  child: const Text("Reset")),
+              ElevatedButton(
+                  style: TiffinAppTheme.elevatedButtonStyle.copyWith(
+                      textStyle: MaterialStatePropertyAll(
+                          TiffinAppTheme.bodySmallTextStyle)),
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
+                  child: const Text("Apply"))
+            ],
+          );
+        });
       },
     );
   }
@@ -135,6 +245,7 @@ var tiffins = [
       title: "Jumbo Tiffin",
       description: "2 types of sabji, 3 chapati, rice, dessert, papad",
       price: 100,
+      rating: 4.5,
       foodType: "Veg"),
   TiffinDTO(
       imageUrl:
@@ -142,6 +253,7 @@ var tiffins = [
       title: "Jumbo Tiffin",
       description: "2 types of sabji, 3 chapati, rice, dessert, papad",
       price: 99,
+      rating: 4.4,
       foodType: "Non-Veg"),
   TiffinDTO(
       imageUrl:
@@ -149,5 +261,6 @@ var tiffins = [
       title: "Jumbo Tiffin",
       description: "2 types of sabji, 3 chapati, rice, dessert, papad",
       price: 179,
+      rating: 4,
       foodType: "Egg"),
 ];

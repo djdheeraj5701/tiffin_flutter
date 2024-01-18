@@ -5,6 +5,7 @@ class TiffinDTO {
   String title;
   String description;
   int price;
+  double rating;
   String foodType;
 
   TiffinDTO(
@@ -12,5 +13,6 @@ class TiffinDTO {
       required this.title,
       required this.description,
       required this.price,
+      required this.rating,
       required this.foodType});
 }
