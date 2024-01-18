@@ -12,13 +12,16 @@ class TiffinOrderPage extends StatefulWidget {
 class _TiffinOrderPageState extends State<TiffinOrderPage> {
   @override
   Widget build(BuildContext context) {
-    final TiffinDTO tiffinDTO =
-        ModalRoute.of(context)?.settings.arguments as TiffinDTO;
+    final Map args = ModalRoute.of(context)?.settings.arguments as Map;
+    final TiffinDTO tiffinDTO = args["tiffinDTO"];
+    final int index = args["index"];
     return SafeArea(
       child: Scaffold(
-        body: TiffinCard(
-          tiffin: tiffinDTO,
-        ),
+        body: Hero(
+            tag: "tiffinOrder$index",
+            child: TiffinCard(
+              tiffin: tiffinDTO,
+            )),
       ),
     );
   }
