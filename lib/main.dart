@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       theme: TiffinAppTheme.lightTheme,
-      initialRoute: RouteNames.home.Name,
+      initialRoute: RouteNames.home.route,
       routes: tiffinAppRoutes,
     );
   }

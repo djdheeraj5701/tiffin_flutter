@@ -14,7 +14,7 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _termsCheck = true;
 
   registerUser() async {
-    Navigator.of(context).pushNamed(RouteNames.otp.Name);
+    Navigator.of(context).pushNamed(RouteNames.otp.route);
   }
 
   toggleTermsCheck() {
@@ -25,7 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   redirectToTermsPage() {}
   redirectToLoginPage() async {
-    Navigator.of(context).pushReplacementNamed(RouteNames.login.Name);
+    Navigator.of(context).pushReplacementNamed(RouteNames.login.route);
   }
 
   @override

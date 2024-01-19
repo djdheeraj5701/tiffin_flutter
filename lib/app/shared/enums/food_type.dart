@@ -21,7 +21,6 @@ FoodType getFoodTypeOf(foodType) {
   throw Exception("Food Type not found");
 }
 
-// ignore: non_constant_identifier_names
 Widget FoodTypeIcon(String foodType) {
   late Color foodColor;
   late IconData innerIcon;

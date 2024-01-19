@@ -27,9 +27,9 @@ class _HomePageState extends State<HomePage> {
 
   redirectToNotificationsPage() {}
 
-  redirectToTiffinOrderPage(TiffinDTO tiffinDTO, int index) {
+  redirectToTiffinSummaryPage(TiffinDTO tiffinDTO, int index) {
     Map args = {"tiffinDTO": tiffinDTO, "index": index};
-    Navigator.of(context).pushNamed("/tiffin-order", arguments: args);
+    Navigator.of(context).pushNamed("/tiffin-summary", arguments: args);
   }
 
   searchTiffins(String searchValue) {
@@ -235,10 +235,10 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          redirectToTiffinOrderPage(tiffins[index], index);
+                          redirectToTiffinSummaryPage(tiffins[index], index);
                         },
                         child: Hero(
-                            tag: "tiffinOrder$index",
+                            tag: "tiffinSummary$index",
                             child: TiffinCard(tiffin: tiffins[index])),
                       );
                     }),

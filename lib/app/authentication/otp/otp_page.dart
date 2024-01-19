@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:tiffin_flutter/app/shared/utils/misc.dart';
 import 'package:tiffin_flutter/app_routes.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
@@ -14,14 +15,10 @@ class OTPPage extends StatefulWidget {
 class _OTPPageState extends State<OTPPage> {
   verifyOTP() async {
     Navigator.of(context)
-        .pushNamedAndRemoveUntil(RouteNames.home.Name, (route) => false);
+        .pushNamedAndRemoveUntil(RouteNames.home.route, (route) => false);
   }
 
   regenerateOTP() {}
-
-  redirectToPreviousPage() async {
-    Navigator.of(context).pop();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +27,7 @@ class _OTPPageState extends State<OTPPage> {
         canPop: false,
         onPopInvoked: (didPop) async {
           if (didPop) return;
-          redirectToPreviousPage();
+          redirectToPreviousPage(context);
         },
         child: Scaffold(
           body: SingleChildScrollView(
@@ -40,7 +37,7 @@ class _OTPPageState extends State<OTPPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GestureDetector(
-                    onTap: redirectToPreviousPage,
+                    onTap: () => redirectToPreviousPage(context),
                     child: Container(
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
