@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
-import 'package:tiffin_flutter/app/shared/enums/time_slot.dart';
 import 'package:tiffin_flutter/app/shared/models/tiffin_dto.dart';
 import 'package:tiffin_flutter/app/shared/utils/misc.dart';
+import 'package:tiffin_flutter/app/shared/widgets/address_card.dart';
 import 'package:tiffin_flutter/app/shared/widgets/tiffin_card.dart';
 import 'package:tiffin_flutter/app/shared/widgets/time_slot_card.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
@@ -22,6 +22,7 @@ class _TiffinSummaryPageState extends State<TiffinSummaryPage> {
     final int index = args["index"];
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
         body: Padding(
           padding: const EdgeInsets.only(left: 24, right: 24, top: 32),
           child: SingleChildScrollView(
@@ -55,6 +56,7 @@ class _TiffinSummaryPageState extends State<TiffinSummaryPage> {
                     child: TiffinCard(
                       tiffin: tiffinDTO,
                     )),
+                const AddressCard(),
                 const TimeSlotCard()
               ],
             ),

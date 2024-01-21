@@ -12,7 +12,7 @@ Map<TimeSlot, List<TimeOfDay>> timeSlots = {
     [09, 00],
     [09, 30],
     [10, 00],
-    [10, 30]
+    [10, 30],
   ].map((time) => TimeOfDay(hour: time[0], minute: time[1])).toList(),
   TimeSlot.lunch: [
     [12, 30],
@@ -34,6 +34,10 @@ Map<TimeSlot, List<TimeOfDay>> timeSlots = {
 
 String getformattedtime(TimeOfDay time) {
   return '${time.hour == 12 ? 12 : time.hour % 12}:${time.minute.toString().padLeft(2, '0')} ${time.period.toString().split('.')[1]}';
+}
+
+bool isDisabledTime(TimeOfDay timeOfDayOption) {
+  return TimeOfDay.now().add(hh: 1).isGreaterThan(timeOfDayOption);
 }
 
 extension StringExtension on String {

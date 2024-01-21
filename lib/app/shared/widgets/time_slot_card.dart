@@ -11,7 +11,10 @@ class TimeSlotCard extends StatefulWidget {
 }
 
 class _TimeSlotCardState extends State<TimeSlotCard> {
-  String selectedTimeSlot = "Breakfast";
+  List<TimeSlot> availableTimeSlots = TimeSlotExtension.getUpcomingSlots();
+  String? selectedTimeSlot = TimeSlotExtension.getUpcomingSlots().isNotEmpty
+      ? TimeSlotExtension.getUpcomingSlots().first.name.toTitleCase()
+      : null;
   TimeOfDay? selectedTimeOfDay;
 
   @override
@@ -24,21 +27,21 @@ class _TimeSlotCardState extends State<TimeSlotCard> {
       child: SizedBox(
           width: double.infinity,
           child: Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(12),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Time Slot",
+                    "Delivery Timeslot",
                     style: TiffinAppTheme.headingSmallTextStyle,
                   ),
                   DropdownButton(
                       value: selectedTimeSlot,
                       icon: null,
                       dropdownColor: TiffinAppTheme.primaryTints[100],
-                      items: TimeSlot.values
+                      items: TimeSlotExtension.getUpcomingSlots()
                           .map((timeSlot) => DropdownMenuItem(
                                 value: timeSlot.name.toTitleCase(),
                                 child: Text(timeSlot.name.toTitleCase()),
@@ -52,32 +55,45 @@ class _TimeSlotCardState extends State<TimeSlotCard> {
                       })
                 ],
               ),
-              Wrap(
-                  spacing: 5.0,
-                  children: timeSlots[getTimeSlot(selectedTimeSlot)]!
-                      .map((timeOfDay) => ChoiceChip(
-                            showCheckmark: false,
-                            side: selectedTimeOfDay == timeOfDay
-                                ? const BorderSide(
-                                    width: 1,
-                                    color: TiffinAppTheme.primaryColor)
-                                : BorderSide.none,
-                            selectedColor: TiffinAppTheme.primaryTints[100],
-                            label: Text(
-                              getformattedtime(timeOfDay),
-                            ),
-                            selected: selectedTimeOfDay == timeOfDay,
-                            onSelected: (isSelected) {
-                              setState(() {
-                                if (isSelected) {
-                                  selectedTimeOfDay = timeOfDay;
-                                } else if (selectedTimeOfDay == timeOfDay) {
-                                  selectedTimeOfDay = null;
-                                }
-                              });
-                            },
-                          ))
-                      .toList()),
+              availableTimeSlots.isNotEmpty
+                  ? Wrap(
+                      spacing: 5.0,
+                      children: timeSlots[getTimeSlot(selectedTimeSlot!)]!
+                          .map((timeOfDayOption) => ChoiceChip(
+                                showCheckmark: false,
+                                side: selectedTimeOfDay == timeOfDayOption
+                                    ? const BorderSide(
+                                        width: 1,
+                                        color: TiffinAppTheme.primaryColor)
+                                    : const BorderSide(),
+                                selectedColor: TiffinAppTheme.primaryTints[100],
+                                label: Text(
+                                  getformattedtime(timeOfDayOption),
+                                ),
+                                backgroundColor: isDisabledTime(timeOfDayOption)
+                                    ? Colors.grey.shade300
+                                    : Colors.white,
+                                pressElevation:
+                                    isDisabledTime(timeOfDayOption) ? 0 : 4,
+                                elevation:
+                                    isDisabledTime(timeOfDayOption) ? 0 : 4,
+                                selected: selectedTimeOfDay == timeOfDayOption,
+                                onSelected: (isSelected) {
+                                  setState(() {
+                                    if (isDisabledTime(timeOfDayOption)) return;
+                                    if (isSelected) {
+                                      selectedTimeOfDay = timeOfDayOption;
+                                    } else if (selectedTimeOfDay ==
+                                        timeOfDayOption) {
+                                      selectedTimeOfDay = null;
+                                    }
+                                  });
+                                },
+                              ))
+                          .toList())
+                  : Container(
+                      child: Text("No Time Slots"),
+                    ),
             ]),
           )),
     );

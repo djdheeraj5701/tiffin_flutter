@@ -18,10 +18,10 @@ class TiffinCard extends StatelessWidget {
       shadowColor: Colors.grey.shade100,
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: SizedBox(
-          height: 230,
+          height: 240,
           width: double.infinity,
           child: Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(12),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
