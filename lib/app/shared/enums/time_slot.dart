@@ -13,6 +13,7 @@ TimeSlot getTimeSlot(String timeSlot) {
 
 extension TimeSlotExtension on TimeSlot {
   static List<TimeSlot> getUpcomingSlots() {
+    if (TimeOfDay.now().hour > 22) return [];
     if (isDisabledTime(timeSlots[TimeSlot.dinner]!.last)) {
       return [];
     }

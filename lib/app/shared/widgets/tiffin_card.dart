@@ -1,15 +1,25 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:tiffin_flutter/app/shared/enums/food_type.dart';
 import 'package:tiffin_flutter/app/shared/models/tiffin_dto.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
-class TiffinCard extends StatelessWidget {
+class TiffinCard extends StatefulWidget {
   final TiffinDTO tiffin;
   const TiffinCard({super.key, required this.tiffin});
 
+  @override
+  State<TiffinCard> createState() => _TiffinCardState();
+}
+
+class _TiffinCardState extends State<TiffinCard> {
+  final Image _placeHolderImage = Image.asset(
+    "assets/images/tiffin_placeholder.jpg",
+    fit: BoxFit.cover,
+  );
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,8 +40,10 @@ class TiffinCard extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10)),
-                    child: Image(
-                      image: NetworkImage(tiffin.imageUrl),
+                    child: CachedNetworkImage(
+                      placeholder: (context, url) => _placeHolderImage,
+                      imageUrl: widget.tiffin.imageUrl,
+                      errorWidget: (context, url, error) => _placeHolderImage,
                       width: double.infinity,
                       height: 110,
                       fit: BoxFit.cover,
@@ -41,7 +53,7 @@ class TiffinCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        tiffin.title,
+                        widget.tiffin.title,
                         style: TiffinAppTheme.headingSmallTextStyle,
                       ),
                       Container(
@@ -59,7 +71,7 @@ class TiffinCard extends StatelessWidget {
                               size: 14,
                             ),
                             Text(
-                              "${tiffin.rating}",
+                              "${widget.tiffin.rating}",
                               style: TiffinAppTheme.captionTextStyle,
                             ),
                           ],
@@ -68,7 +80,7 @@ class TiffinCard extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    tiffin.description,
+                    widget.tiffin.description,
                     overflow: TextOverflow.ellipsis,
                     style: TiffinAppTheme.bodySmallTextStyle,
                   ),
@@ -78,8 +90,8 @@ class TiffinCard extends StatelessWidget {
                       Chip(
                         label: Row(
                           children: [
-                            FoodTypeIcon(tiffin.foodType),
-                            Text(tiffin.foodType),
+                            FoodTypeIcon(widget.tiffin.foodType),
+                            Text(widget.tiffin.foodType),
                           ],
                         ),
                         labelPadding: EdgeInsets.symmetric(horizontal: 2),
@@ -87,7 +99,7 @@ class TiffinCard extends StatelessWidget {
                         side: BorderSide.none,
                       ),
                       Text(
-                        "₹ ${tiffin.price}/-",
+                        "₹ ${widget.tiffin.price}/-",
                         style: TiffinAppTheme.headingSmallTextStyle,
                       )
                     ],

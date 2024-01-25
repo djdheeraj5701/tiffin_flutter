@@ -1,5 +1,3 @@
-import 'package:tiffin_flutter/app/shared/enums/food_type.dart';
-
 class TiffinDTO {
   String imageUrl;
   String title;
