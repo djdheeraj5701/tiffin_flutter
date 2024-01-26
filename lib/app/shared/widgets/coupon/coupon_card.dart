@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:tiffin_flutter/app/shared/widgets/coupon/coupon_offer.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
@@ -72,13 +73,22 @@ class _CouponCardState extends State<CouponCard> {
                     style: TiffinAppTheme.bodyLargeTextStyle
                         .copyWith(fontWeight: FontWeight.w900),
                   ),
-                  GestureDetector(
-                    onTap: openCouponDrawer,
-                    child: Text("View Offers",
-                        style: TiffinAppTheme.bodySmallTextStyle.copyWith(
-                            color: TiffinAppTheme.primaryColor,
-                            decorationColor: TiffinAppTheme.primaryColor,
-                            decoration: TextDecoration.underline)),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: openCouponDrawer,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              shape: BoxShape.rectangle,
+                              color: TiffinAppTheme.primaryColor),
+                          padding: const EdgeInsets.all(8),
+                          child: Icon(
+                            Icons.discount_outlined,
+                            size: 20,
+                            color: Colors.white,
+                          )),
+                    ),
                   )
                 ],
               ))),

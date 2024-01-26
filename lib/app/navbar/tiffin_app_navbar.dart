@@ -16,6 +16,7 @@ class _TiffinAppNavbarState extends State<TiffinAppNavbar> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
+      animationDuration: const Duration(milliseconds: 200),
       height: 64,
       backgroundColor: Colors.transparent,
       buttonBackgroundColor: TiffinAppTheme.primaryColor,
