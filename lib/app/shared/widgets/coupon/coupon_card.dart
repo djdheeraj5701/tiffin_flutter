@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
-import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:tiffin_flutter/app/shared/widgets/coupon/coupon_offer.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
 
@@ -14,6 +13,7 @@ class CouponCard extends StatefulWidget {
 class _CouponCardState extends State<CouponCard> {
   openCouponDrawer() {
     showModalBottomSheet(
+        isScrollControlled: true,
         context: context,
         builder: (context) => Container(
               width: double.infinity,
@@ -35,7 +35,7 @@ class _CouponCardState extends State<CouponCard> {
                       ),
                     ),
                     ...List.generate(
-                        3,
+                        2,
                         (index) => GestureDetector(
                             onTap: () {
                               setState(() {
