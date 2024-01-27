@@ -156,7 +156,7 @@ class _AddressCardState extends State<AddressCard> {
                         padding: const EdgeInsets.all(8),
                         child: const Icon(
                           MaterialSymbols.edit_location_alt,
-                          size: 24,
+                          size: 20,
                           color: Colors.white,
                         )),
                   ),
