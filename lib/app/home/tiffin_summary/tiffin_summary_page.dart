@@ -58,8 +58,8 @@ class _TiffinSummaryPageState extends State<TiffinSummaryPage> {
                     child: TiffinCard(
                       tiffin: tiffinDTO,
                     )),
-                AddressCard(),
                 const TimeSlotCard(),
+                AddressCard(),
                 const CouponCard(),
                 const ReceiptCard()
               ],
