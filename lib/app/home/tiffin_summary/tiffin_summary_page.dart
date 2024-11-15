@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:tiffin_flutter/app/shared/models/tiffin_dto.dart';
 import 'package:tiffin_flutter/app/shared/utils/misc.dart';
-import 'package:tiffin_flutter/app/shared/widgets/address_card.dart';
+import 'package:tiffin_flutter/app/shared/widgets/address/address_card.dart';
 import 'package:tiffin_flutter/app/shared/widgets/coupon/coupon_card.dart';
+import 'package:tiffin_flutter/app/shared/widgets/razorpay_checkout.dart';
 import 'package:tiffin_flutter/app/shared/widgets/receipt_card.dart';
+import 'package:tiffin_flutter/app/shared/widgets/tiffin_app_bar.dart';
 import 'package:tiffin_flutter/app/shared/widgets/tiffin_card.dart';
 import 'package:tiffin_flutter/app/shared/widgets/time_slot_card.dart';
 import 'package:tiffin_flutter/global-styles/tiffin_app_theme.dart';
@@ -24,27 +26,7 @@ class _TiffinSummaryPageState extends State<TiffinSummaryPage> {
     final int index = args["index"];
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          scrolledUnderElevation: 0,
-          toolbarHeight: 72,
-          backgroundColor: Colors.grey.shade100,
-          leading: GestureDetector(
-            onTap: () => redirectToPreviousPage(context),
-            child: Container(
-                margin: const EdgeInsets.only(left: 24),
-                child: const Icon(
-                  MaterialSymbols.arrow_back,
-                  size: 24,
-                )),
-          ),
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 36),
-            child: Text(
-              "Tiffin Summary",
-              style: TiffinAppTheme.headingSmallTextStyle,
-            ),
-          ),
-        ),
+        appBar: TiffinAppBar(context, "Tiffin Summary"),
         backgroundColor: Colors.grey.shade100,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -59,9 +41,10 @@ class _TiffinSummaryPageState extends State<TiffinSummaryPage> {
                       tiffin: tiffinDTO,
                     )),
                 const TimeSlotCard(),
-                AddressCard(),
+                AddressCard(primaryAddress: "Vimannagar",),
                 const CouponCard(),
-                const ReceiptCard()
+                const ReceiptCard(),
+                const RazorpayCheckoutButton()
               ],
             ),
           ),

@@ -25,6 +25,13 @@ class _HomePageState extends State<HomePage> {
   String sortOption = "Price";
   bool isAscSort = true;
 
+  String address =
+      "A4 102 Lunkad Daffodils, Opp. To Mahada Colony, Vimannagar, Pune 411014";
+
+  redirectToAddressPage() {
+    Navigator.of(context).pushNamed("/address");
+  }
+
   redirectToNotificationsPage() {}
 
   redirectToTiffinSummaryPage(TiffinDTO tiffinDTO, int index) {
@@ -165,9 +172,26 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Tiffins for\nYou",
-                        style: TiffinAppTheme.headingLargeTextStyle,
+                      GestureDetector(
+                        onTap: redirectToAddressPage,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Delivering to",
+                              style: TiffinAppTheme.headingSmallTextStyle,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              child: Text(
+                                address,
+                                style: TiffinAppTheme.bodySmallTextStyle,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                       GestureDetector(
                         onTap: redirectToNotificationsPage,
